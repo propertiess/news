@@ -1,9 +1,14 @@
-import { FC, HTMLAttributes } from 'react';
+import { FC } from 'react';
+import { PostList } from '@/components';
+import { UpdatePostsButton } from '@/components/';
 
-interface Props extends HTMLAttributes<unknown> {}
-
-const Home: FC<Props> = () => {
-  return <div>Home page</div>;
+const Home: FC = () => {
+  return (
+    <>
+      <UpdatePostsButton />
+      <PostList />
+    </>
+  );
 };
 
 export { Home };

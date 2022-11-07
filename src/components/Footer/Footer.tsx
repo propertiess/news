@@ -6,7 +6,7 @@ interface Props extends HTMLAttributes<unknown> {}
 const Footer: FC<Props> = ({ ...rest }) => {
   return (
     <footer className={styles.footer} {...rest}>
-      Footer
+      &copy; Propertiess news 2022
     </footer>
   );
 };

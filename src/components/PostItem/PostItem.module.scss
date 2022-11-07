@@ -1,0 +1,22 @@
+.post {
+  @apply mt-3 mx-1 px-3 pt-3 pb-1 bg-white;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+
+  .title {
+    @apply font-medium text-[17px];
+  }
+
+  .dateAndCreated {
+    @apply flex flex-wrap justify-between mt-2 items-center;
+  }
+
+  .date {
+    @apply text-gray-400 text-[12px];
+  }
+  .createdBy {
+    @apply text-[14px] block w-[150px];
+  }
+  .score {
+    @apply text-[10px] ml-1;
+  }
+}
