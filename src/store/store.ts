@@ -10,12 +10,16 @@ import {
   persistStore
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { postsSlice } from './slices/posts.slice';
 
-export const rootReducer = combineReducers({});
+export const rootReducer = combineReducers({
+  idPosts: postsSlice.reducer
+});
 
 const persistConfig = {
   key: 'root',
-  storage
+  storage,
+  blacklist: ['idPosts']
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
