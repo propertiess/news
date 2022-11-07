@@ -1,7 +1,6 @@
-import { FC, useEffect, useState } from 'react';
-import { IPost } from '@/interfaces/post.interface';
-import { PostService } from '@/services/post.service';
-import { getDate } from '@/utils/helpers/getDate';
+import { FC } from 'react';
+import { Link } from 'react-router-dom';
+import { useFetchedPost } from '@/hooks/useFetchedPost';
 import styles from './PostItem.module.scss';
 
 interface Props {
@@ -9,26 +8,18 @@ interface Props {
 }
 
 const PostItem: FC<Props> = ({ id }) => {
-  const [post, setPost] = useState<IPost>();
-  const [date, setDate] = useState('')
+  const { post, date, isLoading } = useFetchedPost(id);
 
-  useEffect(() => {
-    const fetchPost = async () => {
-      const { data } = await PostService.fetchPost(id);
-      setPost(data);
-      const { date, time } = getDate(data.time);
-
-      setDate(`${date} ${time}`)
-    };
-    fetchPost();
-  }, []);
+  if (isLoading) return null;
 
   return (
     <li className={styles.post}>
-      <h3 className={styles.title}>{post?.title}</h3>
+      <Link className={styles.title} to={`/post/${id}`}>
+        {post?.title}
+      </Link>
       <p className={styles.dateAndCreated}>
         <span className={styles.date}>
-          {date}
+          {date?.date} {date?.time}
           <label className={styles.score}>Rating: {post?.score}</label>
         </span>
         <span className={styles.createdBy}>Created by {post?.by}</span>

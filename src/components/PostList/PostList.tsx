@@ -1,9 +1,9 @@
 import { FC, useEffect } from 'react';
+import { PostItem } from '@/components';
 import { Loader } from '@/Loader/Loader';
 import { useTimerForUpdatePosts } from '@/hooks/useTimerForUpdatePosts';
 import { useActions } from '@/store/hooks/useActions';
 import { useAppSelector } from '@/store/hooks/useAppSelector';
-import { PostItem } from '@/components';
 import styles from './PostList.module.scss';
 
 interface Props {}
@@ -15,7 +15,7 @@ const PostList: FC<Props> = () => {
   useTimerForUpdatePosts();
 
   useEffect(() => {
-    fetchIdPosts();
+    !idPosts && fetchIdPosts();
   }, []);
 
   return (

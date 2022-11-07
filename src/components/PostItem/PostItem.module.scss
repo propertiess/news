@@ -3,7 +3,8 @@
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
 
   .title {
-    @apply font-medium text-[17px];
+    @apply font-medium text-[17px] hover:text-blue-500;
+    transition: color 0.3s ease;
   }
 
   .dateAndCreated {

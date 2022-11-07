@@ -1,0 +1,20 @@
+.wrap {
+  @apply p-3 flex flex-col h-full;
+  > h2 {
+    @apply text-[23px] font-medium;
+  }
+  button,
+  .by {
+    @apply ml-auto;
+  }
+  a {
+    @apply hover:text-blue-500;
+    transition: color 0.3s ease;
+  }
+  .date {
+    @apply text-gray-400 text-[13px];
+  }
+  .by {
+    @apply mt-auto;
+  }
+}
