@@ -1,5 +1,10 @@
 .nav {
+  @apply flex gap-1 items-center;
+  img {
+    @apply inline-block;
+  }
   a {
-    @apply text-[#c71c22] text-[20px] w-16 font-semibold italic;
+    @apply text-[20px] font-semibold italic;
+    color: red;
   }
 }

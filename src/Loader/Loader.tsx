@@ -1,10 +1,8 @@
-import { FC, HTMLAttributes } from 'react';
+import { FC } from 'react';
 import ClipLoader from 'react-spinners/ClipLoader';
 import styles from './Loader.module.scss';
 
-interface Props extends HTMLAttributes<unknown> {}
-
-const Loader: FC<Props> = () => {
+const Loader: FC = () => {
   return (
     <div className={styles.wrap}>
       <div className={styles.item}>

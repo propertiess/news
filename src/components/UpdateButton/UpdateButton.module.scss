@@ -1,6 +1,7 @@
 .btn {
-  @apply flex justify-end gap-1 px-3 py-2 items-center text-end cursor-pointer;
+  @apply flex gap-1 px-3 py-2 w-fit items-center ml-auto text-white;
   > span {
-    @apply text-[14px] block font-medium;
+    @apply text-[14px] font-medium rounded-full bg-blue-500 bg-opacity-90 hover:bg-opacity-100 active:bg-opacity-100 active:scale-105 px-3 py-1 flex items-center gap-1;
+    transition: transform 0.3s ease, color 0.3s ease;
   }
 }

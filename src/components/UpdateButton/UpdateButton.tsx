@@ -8,8 +8,10 @@ interface Props extends HTMLAttributes<unknown> {
 const UpdateButton: FC<Props> = ({ title, ...rest }) => {
   return (
     <button className={styles.btn} {...rest}>
-      <span>{title}</span>
-      <ArrowPathIcon width={14} height={14} />
+      <span>
+        {title}
+        <ArrowPathIcon width={14} height={14} />
+      </span>
     </button>
   );
 };
