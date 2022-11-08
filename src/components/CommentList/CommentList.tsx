@@ -3,6 +3,8 @@ import { CommentItem, Loader, UpdateButton } from '@/components';
 import { useActions } from '@/store/hooks/useActions';
 import { useAppSelector } from '@/store/hooks/useAppSelector';
 import styles from './CommentList.module.scss';
+import { AnimatePresence, motion } from 'framer-motion';
+import { fadeInOut } from '@/animation';
 
 interface Props {
   kids: number[] | undefined;
@@ -14,25 +16,29 @@ const CommentList: FC<Props> = ({ kids, count }) => {
   const { post, loadingComments } = useAppSelector(state => state.post);
   const { fetchCommentsPost } = useActions();
 
-  if (!kids?.length) return null;
-
   if (loadingComments) return <Loader />;
 
   return (
-    <ul className={stylesWrap}>
-      {count && (
-        <p className={styles.count}>
-          Commentaries: {count}
-          <UpdateButton
-            title='Update comments'
-            onClick={() => fetchCommentsPost(post.id)}
-          />
-        </p>
-      )}
-      {kids.map(el => (
-        <CommentItem key={el} id={el} />
-      ))}
-    </ul>
+    <AnimatePresence>
+      {kids?.length &&
+        <motion.ul className={stylesWrap} layout {...fadeInOut}>
+          {count && (
+            <p className={styles.count}>
+              Commentaries: {count}
+              <UpdateButton
+                title='Update comments'
+                onClick={() => fetchCommentsPost(post.id)}
+              />
+            </p>
+          )}
+          <AnimatePresence initial={false} mode='popLayout'>
+            {kids && kids.map(el => (
+              <CommentItem key={el} id={el} />
+            ))}
+          </AnimatePresence>
+        </motion.ul>
+      }
+    </AnimatePresence>
   );
 };
 

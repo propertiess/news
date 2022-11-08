@@ -1,24 +1,26 @@
 import { FC, HTMLAttributes } from 'react';
 import { ArrowDownIcon, ArrowUpIcon } from '@heroicons/react/24/outline';
 import styles from './Arrow.module.scss';
+import { motion } from 'framer-motion';
 
-interface Props extends HTMLAttributes<unknown> {
+interface Props {
   up?: boolean;
   title: string;
+  onClick: () => void
 }
 
-const Arrow: FC<Props> = ({ up, title, ...rest }) => {
+const Arrow: FC<Props> = ({ up, title, onClick }) => {
   if (up)
     return (
-      <span className={styles.arrow} {...rest}>
+      <motion.span className={styles.arrow} layout onClick={onClick}>
         {title} <ArrowUpIcon width={15} height={15} />
-      </span>
+      </motion.span>
     );
 
   return (
-    <span className={styles.arrow} {...rest}>
+    <motion.span className={styles.arrow} layout onClick={onClick}>
       {title} <ArrowDownIcon width={15} height={15} />
-    </span>
+    </motion.span>
   );
 };
 
