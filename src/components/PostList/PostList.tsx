@@ -1,6 +1,6 @@
-import { FC, useEffect } from 'react';
-import { PostItem } from '@/components';
-import { Loader } from '@/Loader/Loader';
+import { FC, useEffect, useState } from 'react';
+import { InView } from 'react-intersection-observer';
+import { Loader, PostItem } from '@/components';
 import { useTimerForUpdatePosts } from '@/hooks/useTimerForUpdatePosts';
 import { useActions } from '@/store/hooks/useActions';
 import { useAppSelector } from '@/store/hooks/useAppSelector';
@@ -10,6 +10,7 @@ interface Props {}
 
 const PostList: FC<Props> = () => {
   const { idPosts, loading } = useAppSelector(state => state.idPosts);
+  const [countRenderedPost, setCountRenderedPost] = useState(10);
   const { fetchIdPosts } = useActions();
 
   useTimerForUpdatePosts();
@@ -18,9 +19,34 @@ const PostList: FC<Props> = () => {
     !idPosts && fetchIdPosts();
   }, []);
 
+  const incrementCountRenderedPost = (inView: any) => {
+    if (!inView) return;
+    if (countRenderedPost === idPosts?.length) return;
+
+    let incrementedCount = countRenderedPost + 10;
+
+    if (incrementedCount > idPosts?.length) {
+      incrementedCount = idPosts.length;
+      setCountRenderedPost(incrementedCount);
+      return;
+    }
+
+    setCountRenderedPost(incrementedCount);
+  };
+
   return (
     <ul className={styles.item}>
-      {!loading ? idPosts.map(el => <PostItem key={el} id={el} />) : <Loader />}
+      {!loading &&
+        idPosts
+          .slice(0, countRenderedPost)
+          .map(el => <PostItem key={el} id={el} />)}
+      {countRenderedPost !== idPosts?.length && !loading && (
+        <InView as='li' onChange={incrementCountRenderedPost}>
+          <div className='relative h-[10px]'>
+            <Loader />
+          </div>
+        </InView>
+      )}
     </ul>
   );
 };
