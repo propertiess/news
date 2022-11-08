@@ -9,6 +9,13 @@
   .by {
     @apply flex gap-1 items-center flex-wrap font-medium;
   }
+  .text {
+    @apply overflow-hidden;
+    word-wrap: break-word;
+  }
+  code {
+    @apply whitespace-normal;
+  }
 }
 @media (max-width: 768px) {
   .item {

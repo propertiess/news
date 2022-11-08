@@ -32,7 +32,9 @@ const CommentItem: FC<Props> = ({ id }) => {
               {time}
             </motion.span>
           </motion.span>
-          <motion.span layout>{HTMLReactParser(comment?.text!)}</motion.span>
+          <motion.span className={styles.text} layout>
+            {HTMLReactParser(comment?.text!)}
+          </motion.span>
           {!!comment?.kids?.length && (
             <>
               {!isShowAnswer ? (
