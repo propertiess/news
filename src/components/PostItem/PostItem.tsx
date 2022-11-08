@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useFetchedPost } from '@/hooks/useFetchedPost';
 import styles from './PostItem.module.scss';
 
@@ -9,12 +9,13 @@ interface Props {
 
 const PostItem: FC<Props> = ({ id }) => {
   const { post, date, isLoading } = useFetchedPost(id);
+  const history = useHistory();
 
   if (isLoading) return null;
 
   return (
-    <li className={styles.post}>
-      <Link className={styles.title} to={`/post/${id}`}>
+    <li className={styles.post} onClick={() => history.push(`/post/${id}`)}>
+      <Link className={styles.title} to={`/post/${id}`} replace>
         {post?.title}
       </Link>
       <p className={styles.dateAndCreated}>

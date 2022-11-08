@@ -1,5 +1,5 @@
 .arrow {
-  @apply flex items-center mr-auto ml-0 gap-1 cursor-pointer w-fit hover:text-blue-500;
+  @apply flex items-center mr-auto ml-0 gap-1 cursor-pointer w-fit text-blue-500;
   display: flex !important;
   > svg {
     @apply text-start mr-auto ml-0;
