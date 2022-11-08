@@ -1,0 +1,12 @@
+.item {
+  @apply border p-2;
+  > span {
+    @apply block;
+  }
+  .date {
+    @apply text-gray-400 text-[14px];
+  }
+  .by {
+    @apply flex gap-1 items-center;
+  }
+}

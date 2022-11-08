@@ -1,0 +1,6 @@
+.btn {
+  @apply flex justify-end gap-1 items-center text-end cursor-pointer;
+  > span {
+    @apply text-[14px] block font-medium;
+  }
+}

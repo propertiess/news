@@ -1,0 +1,6 @@
+.wrap {
+  @apply p-3 flex flex-col gap-5 h-screen overflow-y-auto;
+}
+.kid {
+  @apply p-3 flex flex-col gap-5;
+}

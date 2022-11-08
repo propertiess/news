@@ -1,11 +1,14 @@
 .wrap {
-  @apply p-3 flex flex-col h-full;
+  @apply p-3 flex flex-col h-screen pb-20;
   > h2 {
     @apply text-[23px] font-medium;
   }
-  button,
+  svg,
   .by {
     @apply ml-auto;
+  }
+  svg {
+    @apply cursor-pointer;
   }
   a {
     @apply hover:text-blue-500;

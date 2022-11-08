@@ -1,0 +1,8 @@
+.arrow {
+  @apply flex items-center mr-auto ml-0 gap-1 cursor-pointer w-fit hover:text-blue-500;
+  display: flex !important;
+  > svg {
+    @apply text-start mr-auto ml-0;
+  }
+  transition: color 0.3s ease;
+}
