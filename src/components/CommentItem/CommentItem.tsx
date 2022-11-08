@@ -1,10 +1,13 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import HTMLReactParser from 'html-react-parser';
+import moment from 'moment';
 import { Arrow, CommentList } from '@/components';
-import { useFetchedComment } from '@/hooks/useFetchedComment';
-import styles from './CommentItem.module.scss';
-import { motion, AnimatePresence } from 'framer-motion';
 import { fadeInOutDown } from '@/animation';
+import { useDate } from '@/hooks/useDate';
+import { useFetchedComment } from '@/hooks/useFetchedComment';
+import { getTimeFromNow } from '@/utils/helpers/getTimeFromNow';
+import styles from './CommentItem.module.scss';
 
 interface Props {
   id: number;
@@ -13,7 +16,9 @@ interface Props {
 const CommentItem: FC<Props> = ({ id }) => {
   const { comment, date, isLoading } = useFetchedComment(id);
   const [isShowAnswer, setIsShowAnswer] = useState(false);
-  const condition = isLoading || typeof comment?.text === 'undefined'
+  const { time } = getTimeFromNow(date.initDate);
+
+  const condition = isLoading || typeof comment?.text === 'undefined';
 
   const toggleShow = () => {
     setIsShowAnswer(prev => !prev);
@@ -21,12 +26,12 @@ const CommentItem: FC<Props> = ({ id }) => {
 
   return (
     <AnimatePresence>
-      {!condition &&
+      {!condition && (
         <motion.li className={styles.item} layout {...fadeInOutDown}>
           <motion.span className={styles.by} layout>
             {comment?.by}
             <motion.span className={styles.date} layout>
-              {date.time} {date.date}
+              {time}
             </motion.span>
           </motion.span>
           <motion.span layout>{HTMLReactParser(comment?.text!)}</motion.span>
@@ -41,7 +46,7 @@ const CommentItem: FC<Props> = ({ id }) => {
             </>
           )}
         </motion.li>
-      }
+      )}
     </AnimatePresence>
   );
 };

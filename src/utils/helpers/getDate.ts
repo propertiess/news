@@ -1,10 +1,13 @@
 export const getDate = (numDate: number) => {
-  const date = new Date(numDate * 1000).toLocaleDateString();
-  let time = new Date(numDate * 1000).toLocaleTimeString();
-  time = time.substring(0, time.length - 3);
+  const date = new Date(numDate * 1000);
+  let time = new Date(numDate * 1000);
+
+  let timeLength = time.toLocaleDateString().length;
 
   return {
-    date,
-    time
+    date: date.toLocaleDateString(),
+    time: time.toLocaleTimeString().substring(0, timeLength - 5),
+    initDate: date,
+    initTime: time
   };
 };

@@ -1,10 +1,10 @@
 import { FC } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { CommentItem, Loader, UpdateButton } from '@/components';
+import { fadeInOut } from '@/animation';
 import { useActions } from '@/store/hooks/useActions';
 import { useAppSelector } from '@/store/hooks/useAppSelector';
 import styles from './CommentList.module.scss';
-import { AnimatePresence, motion } from 'framer-motion';
-import { fadeInOut } from '@/animation';
 
 interface Props {
   kids: number[] | undefined;
@@ -20,7 +20,7 @@ const CommentList: FC<Props> = ({ kids, count }) => {
 
   return (
     <AnimatePresence>
-      {kids?.length &&
+      {!!kids?.length && (
         <motion.ul className={stylesWrap} layout {...fadeInOut}>
           {count && (
             <p className={styles.count}>
@@ -32,12 +32,10 @@ const CommentList: FC<Props> = ({ kids, count }) => {
             </p>
           )}
           <AnimatePresence initial={false} mode='popLayout'>
-            {kids && kids.map(el => (
-              <CommentItem key={el} id={el} />
-            ))}
+            {kids && kids.map(el => <CommentItem key={el} id={el} />)}
           </AnimatePresence>
         </motion.ul>
-      }
+      )}
     </AnimatePresence>
   );
 };
