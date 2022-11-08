@@ -1,5 +1,5 @@
 .wrap {
-  @apply p-3 flex flex-col h-screen pb-20;
+  @apply p-3 flex flex-col h-screen pb-24;
   > h2 {
     @apply text-[23px] font-medium;
   }
@@ -18,6 +18,6 @@
     @apply text-gray-400 text-[13px];
   }
   .by {
-    @apply mt-auto;
+    @apply ml-auto;
   }
 }

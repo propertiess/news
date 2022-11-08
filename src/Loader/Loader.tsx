@@ -6,8 +6,10 @@ interface Props extends HTMLAttributes<unknown> {}
 
 const Loader: FC<Props> = () => {
   return (
-    <div className={styles.item}>
-      <ClipLoader color='blue' />
+    <div className={styles.wrap}>
+      <div className={styles.item}>
+        <ClipLoader color='blue' />
+      </div>
     </div>
   );
 };

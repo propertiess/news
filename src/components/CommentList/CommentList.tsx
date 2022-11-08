@@ -1,5 +1,7 @@
 import { FC } from 'react';
-import { CommentItem, UpdateButton } from '@/components';
+import { CommentItem, Loader, UpdateButton } from '@/components';
+import { useActions } from '@/store/hooks/useActions';
+import { useAppSelector } from '@/store/hooks/useAppSelector';
 import styles from './CommentList.module.scss';
 
 interface Props {
@@ -9,15 +11,22 @@ interface Props {
 
 const CommentList: FC<Props> = ({ kids, count }) => {
   const stylesWrap = count ? styles.wrap : styles.kid;
+  const { post, loadingComments } = useAppSelector(state => state.post);
+  const { fetchCommentsPost } = useActions();
 
   if (!kids?.length) return null;
+
+  if (loadingComments) return <Loader />;
 
   return (
     <ul className={stylesWrap}>
       {count && (
-        <p className='flex justify-between'>
+        <p className={styles.count}>
           Commentaries: {count}
-          <UpdateButton title='Update comments' />
+          <UpdateButton
+            title='Update comments'
+            onClick={() => fetchCommentsPost(post.id)}
+          />
         </p>
       )}
       {kids.map(el => (

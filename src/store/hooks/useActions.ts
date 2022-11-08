@@ -1,11 +1,17 @@
 import { bindActionCreators } from '@reduxjs/toolkit';
 import { postsSlice } from '../slices';
-import { fetchIdPosts } from '../slices/posts.actions';
+import {
+  fetchCommentsPost,
+  fetchIdPosts,
+  fetchPost
+} from '../slices/post.actions';
 import { useAppDispatch } from './useAppDispatch';
 
 const allActions = {
   ...postsSlice.actions,
-  fetchIdPosts
+  fetchIdPosts,
+  fetchPost,
+  fetchCommentsPost
 };
 
 export const useActions = () => {

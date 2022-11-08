@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { fetchIdPosts } from './posts.actions';
+import { fetchIdPosts } from './post.actions';
 
 interface IState {
   idPosts: number[];

@@ -1,8 +1,10 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { ArrowUturnLeftIcon } from '@heroicons/react/24/outline';
 import { useHistory } from 'react-router-dom';
 import { CommentList, Loader } from '@/components';
-import { useFetchedPost } from '@/hooks/useFetchedPost';
+import { useDate } from '@/hooks/useDate';
+import { useActions } from '@/store/hooks/useActions';
+import { useAppSelector } from '@/store/hooks/useAppSelector';
 import styles from './PostView.module.scss';
 
 interface Props {
@@ -10,15 +12,17 @@ interface Props {
 }
 
 const PostView: FC<Props> = ({ id }) => {
+  const { post, loading } = useAppSelector(state => state.post);
+  const date = useDate(post?.time);
+  const { fetchPost } = useActions();
   const history = useHistory();
-  const { post, date, isLoading } = useFetchedPost(+id);
 
-  if (isLoading) {
-    return (
-      <div className='relative'>
-        <Loader />
-      </div>
-    );
+  useEffect(() => {
+    fetchPost(+id);
+  }, []);
+
+  if (loading) {
+    return <Loader />;
   }
 
   return (

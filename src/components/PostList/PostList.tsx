@@ -42,9 +42,7 @@ const PostList: FC<Props> = () => {
           .map(el => <PostItem key={el} id={el} />)}
       {countRenderedPost !== idPosts?.length && !loading && (
         <InView as='li' onChange={incrementCountRenderedPost}>
-          <div className='relative h-[10px]'>
-            <Loader />
-          </div>
+          <Loader />
         </InView>
       )}
     </ul>

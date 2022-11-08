@@ -1,4 +1,4 @@
-import { AppDispatch, RootState, persistor, store } from './store';
+import { AppDispatch, RootState, store } from './store';
 
-export { store, persistor };
+export { store };
 export type { AppDispatch, RootState };
