@@ -13,9 +13,9 @@
 @media (max-width: 768px) {
   .item {
     @apply text-[13px];
-    .by, .date {
+    .by,
+    .date {
       @apply text-[12px];
-    } 
-    
+    }
   }
 }

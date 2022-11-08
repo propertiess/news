@@ -1,5 +1,5 @@
 .post {
-  @apply mt-3 mx-1 px-3 pt-3 pb-1 bg-white cursor-pointer;
+  @apply mt-3 mx-1 px-3 pt-3 pb-1 bg-white cursor-pointer rounded;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
 
   .title {

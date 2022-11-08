@@ -1,17 +1,19 @@
-import { FC, useEffect, useState } from 'react';
-import { InView } from 'react-intersection-observer';
-import { Loader, PostItem } from '@/components';
+import { FC, useEffect } from 'react';
+import { PostItem } from '@/components';
+import { useCountRenderedItems } from '@/hooks/useCountRenderedItems';
 import { useTimerForUpdatePosts } from '@/hooks/useTimerForUpdatePosts';
 import { useActions } from '@/store/hooks/useActions';
 import { useAppSelector } from '@/store/hooks/useAppSelector';
+import { RenderMoreItems } from '../RenderMoreItems/RenderMoreItems';
 import styles from './PostList.module.scss';
 
 interface Props {}
 
 const PostList: FC<Props> = () => {
   const { idPosts, loading } = useAppSelector(state => state.idPosts);
-  const [countRenderedPost, setCountRenderedPost] = useState(10);
   const { fetchIdPosts } = useActions();
+  const { countRenderedItems, incrementCountRenderedItems } =
+    useCountRenderedItems(10, idPosts?.length);
 
   useTimerForUpdatePosts();
 
@@ -19,32 +21,17 @@ const PostList: FC<Props> = () => {
     !idPosts && fetchIdPosts();
   }, []);
 
-  const incrementCountRenderedPost = (inView: any) => {
-    if (!inView) return;
-    if (countRenderedPost === idPosts?.length) return;
-
-    let incrementedCount = countRenderedPost + 10;
-
-    if (incrementedCount > idPosts?.length) {
-      incrementedCount = idPosts.length;
-      setCountRenderedPost(incrementedCount);
-      return;
-    }
-
-    setCountRenderedPost(incrementedCount);
-  };
-
   return (
     <ul className={styles.item}>
       {!loading &&
         idPosts
-          .slice(0, countRenderedPost)
+          .slice(0, countRenderedItems)
           .map(el => <PostItem key={el} id={el} />)}
-      {countRenderedPost !== idPosts?.length && !loading && (
-        <InView as='li' onChange={incrementCountRenderedPost}>
-          <Loader />
-        </InView>
-      )}
+      <RenderMoreItems
+        countRenderedItems={countRenderedItems}
+        renderMore={incrementCountRenderedItems}
+        to={idPosts?.length}
+      />
     </ul>
   );
 };
