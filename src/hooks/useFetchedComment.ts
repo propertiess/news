@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { IComment } from '@/interfaces/comment.interface';
-import { CommentService } from '@/services/comment.service';
+import { IComment } from '@/interfaces';
+import { CommentService } from '@/services';
 import { useDate } from './useDate';
 
 export const useFetchedComment = (id: number) => {

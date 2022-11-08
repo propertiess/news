@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import HTMLReactParser from 'html-react-parser';
 import { Arrow, CommentList } from '@/components';
 import { fadeInOutDown } from '@/animation';
-import { useFetchedComment } from '@/hooks/useFetchedComment';
+import { useFetchedComment } from '@/hooks';
 import { getTimeFromNow } from '@/utils/helpers/getTimeFromNow';
 import styles from './CommentItem.module.scss';
 

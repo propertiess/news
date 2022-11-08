@@ -1,9 +1,7 @@
 import { FC, useEffect } from 'react';
 import { PostItem, RenderMoreItems } from '@/components';
-import { useCountRenderedItems } from '@/hooks/useCountRenderedItems';
-import { useTimerForUpdatePosts } from '@/hooks/useTimerForUpdatePosts';
-import { useActions } from '@/store/hooks/useActions';
-import { useAppSelector } from '@/store/hooks/useAppSelector';
+import { useCountRenderedItems, useTimerForUpdatePosts } from '@/hooks';
+import { useActions, useAppSelector } from '@/store/hooks';
 import styles from './PostList.module.scss';
 
 interface Props {}

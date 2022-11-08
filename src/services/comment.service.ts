@@ -1,4 +1,4 @@
-import { IComment } from '@/interfaces/comment.interface';
+import { IComment } from '@/interfaces';
 import { instance } from './instance';
 
 export const CommentService = {

@@ -1,4 +1,4 @@
-import { IPost } from '@/interfaces/post.interface';
+import { IPost } from '@/interfaces';
 import { instance } from './instance';
 
 export const PostService = {

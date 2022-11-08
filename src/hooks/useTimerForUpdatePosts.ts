@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { useActions } from '@/store/hooks/useActions';
-import { useAppSelector } from '@/store/hooks/useAppSelector';
+import { useActions, useAppSelector } from '@/store/hooks';
 
 export const useTimerForUpdatePosts = () => {
   const timer = useRef<NodeJS.Timeout>();

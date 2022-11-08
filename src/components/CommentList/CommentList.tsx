@@ -7,9 +7,8 @@ import {
   UpdateButton
 } from '@/components';
 import { fadeInOut } from '@/animation';
-import { useCountRenderedItems } from '@/hooks/useCountRenderedItems';
-import { useActions } from '@/store/hooks/useActions';
-import { useAppSelector } from '@/store/hooks/useAppSelector';
+import { useCountRenderedItems } from '@/hooks';
+import { useActions, useAppSelector } from '@/store/hooks';
 import styles from './CommentList.module.scss';
 
 interface Props {

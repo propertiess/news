@@ -1,5 +1,5 @@
 import { FC, HTMLAttributes } from 'react';
-import { Navbar } from '../Navbar/Navbar';
+import { Navbar } from '@/components';
 import styles from './Header.module.scss';
 
 interface Props extends HTMLAttributes<unknown> {}

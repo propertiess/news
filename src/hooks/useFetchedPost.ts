@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { IPost } from '@/interfaces/post.interface';
-import { PostService } from '@/services/post.service';
+import { IPost } from '@/interfaces';
+import { PostService } from '@/services';
 import { useDate } from './useDate';
 
 export const useFetchedPost = (id: number) => {

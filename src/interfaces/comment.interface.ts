@@ -1,5 +1,3 @@
-import { IPost } from './post.interface';
-
 export interface IComment {
   by: string;
   id: number;
