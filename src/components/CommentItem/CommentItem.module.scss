@@ -1,5 +1,5 @@
 .item {
-  @apply p-2;
+  @apply p-1;
   > span {
     @apply block;
   }
@@ -7,6 +7,15 @@
     @apply text-gray-400 text-[14px];
   }
   .by {
-    @apply flex gap-1 items-center;
+    @apply flex gap-1 items-center flex-wrap font-medium;
+  }
+}
+@media (max-width: 768px) {
+  .item {
+    @apply text-[13px];
+    .by, .date {
+      @apply text-[12px];
+    } 
+    
   }
 }

@@ -11,8 +11,7 @@
     @apply cursor-pointer;
   }
   a {
-    @apply hover:text-blue-500;
-    transition: color 0.3s ease;
+    @apply text-blue-500;
   }
   .date {
     @apply text-gray-400 text-[13px];
