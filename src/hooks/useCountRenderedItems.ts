@@ -12,13 +12,10 @@ export const useCountRenderedItems = (initState: number, to: number) => {
     if (incrementedCount > to) {
       incrementedCount = to;
       setCountRenderedItems(incrementedCount);
-      console.log('im here');
-
       return;
     }
 
     setCountRenderedItems(incrementedCount);
-    console.log('im here');
   };
 
   return {

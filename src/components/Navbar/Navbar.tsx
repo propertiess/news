@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Navbar.module.scss';
-import Logo from '/public/logo.svg';
+import Logo from '/logo.svg';
 
 interface Props {}
 

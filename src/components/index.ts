@@ -7,6 +7,7 @@ import { Header } from './Header/Header';
 import { Main } from './Main/Main';
 import { Navbar } from './Navbar/Navbar';
 import { PostItem } from './PostItem/PostItem';
+import { RenderMoreItems } from './RenderMoreItems/RenderMoreItems';
 import { UpdateButton } from './UpdateButton/UpdateButton';
 
 export {
@@ -19,5 +20,6 @@ export {
   Loader,
   CommentList,
   CommentItem,
-  Arrow
+  Arrow,
+  RenderMoreItems
 };

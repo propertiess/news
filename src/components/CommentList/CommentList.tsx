@@ -1,7 +1,13 @@
 import { FC } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { CommentItem, Loader, UpdateButton } from '@/components';
+import {
+  CommentItem,
+  Loader,
+  RenderMoreItems,
+  UpdateButton
+} from '@/components';
 import { fadeInOut } from '@/animation';
+import { useCountRenderedItems } from '@/hooks/useCountRenderedItems';
 import { useActions } from '@/store/hooks/useActions';
 import { useAppSelector } from '@/store/hooks/useAppSelector';
 import styles from './CommentList.module.scss';
@@ -15,6 +21,8 @@ const CommentList: FC<Props> = ({ kids, count }) => {
   const stylesWrap = count ? styles.wrap : styles.kid;
   const { post, loadingComments } = useAppSelector(state => state.post);
   const { fetchCommentsPost } = useActions();
+  const { countRenderedItems, incrementCountRenderedItems } =
+    useCountRenderedItems(10, kids?.length!);
 
   if (loadingComments) return <Loader />;
 
@@ -24,7 +32,7 @@ const CommentList: FC<Props> = ({ kids, count }) => {
         <motion.ul className={stylesWrap} layout {...fadeInOut}>
           {count && (
             <p className={styles.count}>
-              Commentaries: {count}
+              {count} commentaries
               <UpdateButton
                 title='Update comments'
                 onClick={() => fetchCommentsPost(post.id)}
@@ -32,8 +40,16 @@ const CommentList: FC<Props> = ({ kids, count }) => {
             </p>
           )}
           <AnimatePresence initial={false} mode='popLayout'>
-            {kids && kids.map(el => <CommentItem key={el} id={el} />)}
+            {kids &&
+              kids
+                .slice(0, countRenderedItems)
+                .map(el => <CommentItem key={el} id={el} />)}
           </AnimatePresence>
+          <RenderMoreItems
+            countRenderedItems={countRenderedItems}
+            renderMore={incrementCountRenderedItems}
+            to={kids?.length!}
+          />
         </motion.ul>
       )}
     </AnimatePresence>
