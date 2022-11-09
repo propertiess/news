@@ -1,5 +1,10 @@
 # Propertiess news - the best news public in the world
 
+## Stack
+
+```
+ReactJS, Typescript, react-router-dom v5, redux-toolkit, module scss, tailwind
+```
 ## Installation
 
 ### `yarn`
