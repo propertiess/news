@@ -4,10 +4,7 @@
     @apply text-[23px] font-medium;
   }
   .back {
-    @apply ml-auto mb-1;
-  }
-  svg {
-    @apply cursor-pointer;
+    @apply ml-auto mb-1 cursor-pointer w-5 h-5;
   }
   a {
     @apply text-blue-500;
