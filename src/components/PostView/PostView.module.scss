@@ -3,8 +3,7 @@
   > h2 {
     @apply text-[23px] font-medium;
   }
-  .back,
-  .by {
+  .back {
     @apply ml-auto mb-1;
   }
   svg {
@@ -15,8 +14,5 @@
   }
   .date {
     @apply text-gray-400 text-[13px];
-  }
-  .by {
-    @apply ml-auto;
   }
 }

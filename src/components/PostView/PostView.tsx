@@ -37,11 +37,12 @@ const PostView: FC<Props> = ({ id }) => {
         {date?.time} {date?.date}
       </p>
       <h2>{post?.title}</h2>
+      <p>Created by {post?.by}</p>
       <div>
         <a href={post?.url}>Reference to the source</a>
       </div>
-      <p className={styles.by}>Created by {post?.by}</p>
       <CommentList kids={post?.kids} count={post?.descendants!} />
+      {!post?.descendants && <p>0 commentaries</p>}
     </div>
   );
 };

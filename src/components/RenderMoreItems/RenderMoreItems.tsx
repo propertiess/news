@@ -15,7 +15,7 @@ const RenderMoreItems: FC<PropsWithChildren<Props>> = ({
 }) => {
   return (
     <>
-      {countRenderedItems !== to && (
+      {countRenderedItems !== to && !!to && (
         <InView as='li' onChange={renderMore}>
           <Loader />
         </InView>
