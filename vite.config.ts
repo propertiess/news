@@ -1,11 +1,19 @@
+import replace from '@rollup/plugin-replace';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
-import EnvironmentPlugin from 'vite-plugin-environment';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), EnvironmentPlugin('all')],
+  plugins: [
+    react(),
+    replace({
+      values: {
+        'process.env': 'import.meta.env'
+      },
+      preventAssignment: true
+    })
+  ],
   resolve: {
     alias: {
       '@': resolve(__dirname, './src')
