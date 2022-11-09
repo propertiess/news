@@ -2,7 +2,7 @@
   @apply flex items-center mr-auto ml-0 gap-1 cursor-pointer w-fit text-white px-3 py-1 bg-blue-500 rounded-full my-1;
   display: flex !important;
   > svg {
-    @apply text-start mr-auto ml-0;
+    @apply text-start;
   }
   transition: color 0.3s ease;
 }

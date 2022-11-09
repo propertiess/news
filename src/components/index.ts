@@ -2,6 +2,7 @@ import { PostList } from '@/components/PostList/PostList';
 import { Arrow } from './Arrow/Arrow';
 import { CommentItem } from './CommentItem/CommentItem';
 import { CommentList } from './CommentList/CommentList';
+import { EndBlock } from './EndBlock/EndBlock';
 import { Header } from './Header/Header';
 import { Loader } from './Loader/Loader';
 import { Main } from './Main/Main';
@@ -21,5 +22,6 @@ export {
   CommentList,
   CommentItem,
   Arrow,
-  RenderMoreItems
+  RenderMoreItems,
+  EndBlock
 };

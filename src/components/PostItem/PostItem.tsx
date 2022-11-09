@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { EndBlock } from '@/components';
 import { useFetchedPost } from '@/hooks';
 import { useAppSelector } from '@/store/hooks';
 import styles from './PostItem.module.scss';
@@ -9,10 +10,11 @@ interface Props {
 }
 
 const PostItem: FC<Props> = ({ id }) => {
-  const { post, date, isLoading } = useFetchedPost(id);
-  const history = useHistory();
   const { idPosts } = useAppSelector(state => state.idPosts);
-  const end = idPosts[idPosts.length - 1] === id && true;
+  const { post, date, isLoading } = useFetchedPost(id);
+  const isEnd = idPosts[idPosts.length - 1] === id && true;
+
+  const history = useHistory();
 
   if (isLoading) return null;
 
@@ -30,7 +32,7 @@ const PostItem: FC<Props> = ({ id }) => {
           <span className={styles.createdBy}>Created by {post?.by}</span>
         </p>
       </li>
-      {end && <li className={styles.end}></li>}
+      <EndBlock isEnd={isEnd} />
     </>
   );
 };

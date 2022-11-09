@@ -12,16 +12,17 @@ import { useActions, useAppSelector } from '@/store/hooks';
 import styles from './CommentList.module.scss';
 
 interface Props {
-  kids: number[] | undefined;
+  kids: number[];
   count?: number;
 }
 
 const CommentList: FC<Props> = ({ kids, count }) => {
-  const stylesWrap = count ? styles.wrap : styles.kid;
   const { post, loadingComments } = useAppSelector(state => state.post);
   const { fetchCommentsPost } = useActions();
   const { countRenderedItems, incrementCountRenderedItems } =
     useCountRenderedItems(10, kids?.length!);
+
+  const stylesWrap = count ? styles.wrap : styles.kid;
 
   if (loadingComments) return <Loader />;
 

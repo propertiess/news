@@ -28,6 +28,7 @@ const PostView: FC<Props> = ({ id }) => {
   return (
     <div className={styles.wrap}>
       <ArrowUturnLeftIcon
+        className={styles.back}
         width={20}
         height={20}
         onClick={() => history.push('/')}
