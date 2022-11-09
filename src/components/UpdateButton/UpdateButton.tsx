@@ -7,7 +7,7 @@ interface Props extends HTMLAttributes<unknown> {
 }
 const UpdateButton: FC<Props> = ({ title, ...rest }) => {
   return (
-    <button className={styles.btn} {...rest}>
+    <button className={styles.btn} data-testid='btn' {...rest}>
       <span>
         {title}
         <ArrowPathIcon width={14} height={14} />

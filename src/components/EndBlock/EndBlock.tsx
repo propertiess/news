@@ -8,7 +8,7 @@ interface Props {
 const EndBlock: FC<Props> = ({ isEnd }) => {
   if (!isEnd) return null;
 
-  return <span className={styles.end}></span>;
+  return <span className={styles.end} data-testid='end-block'></span>;
 };
 
 export { EndBlock };

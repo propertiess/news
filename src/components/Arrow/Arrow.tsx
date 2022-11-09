@@ -12,13 +12,23 @@ interface Props {
 const Arrow: FC<Props> = ({ up, title, onClick }) => {
   if (up)
     return (
-      <motion.span className={styles.arrow} layout onClick={onClick}>
+      <motion.span
+        className={styles.arrow}
+        layout
+        onClick={onClick}
+        data-testid='arrow-up'
+      >
         {title} <ArrowUpIcon width={15} height={15} />
       </motion.span>
     );
 
   return (
-    <motion.span className={styles.arrow} layout onClick={onClick}>
+    <motion.span
+      className={styles.arrow}
+      layout
+      onClick={onClick}
+      data-testid='arrow-down'
+    >
       {title} <ArrowDownIcon width={15} height={15} />
     </motion.span>
   );
