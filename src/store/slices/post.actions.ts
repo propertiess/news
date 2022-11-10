@@ -1,22 +1,39 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { PostService } from '@/services';
 
-export const fetchIdPosts = createAsyncThunk('fetch-id-posts', async () => {
-  const { data } = await PostService.fetchIdPosts();
+export const fetchIdPosts = createAsyncThunk(
+  'fetch-id-posts',
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await PostService.fetchIdPosts();
+      return data.slice(0, 100);
+    } catch (err) {
+      return rejectWithValue(err as Error);
+    }
+  }
+);
 
-  return data.slice(0, 100);
-});
-
-export const fetchPost = createAsyncThunk('fetch-post', async (id: number) => {
-  const { data } = await PostService.fetchPost(id);
-
-  return data;
-});
+export const fetchPost = createAsyncThunk(
+  'fetch-post',
+  async (id: number, { rejectWithValue }) => {
+    try {
+      const { data } = await PostService.fetchPost(id);
+      return data;
+    } catch (err) {
+      console.error(err);
+      return rejectWithValue(err as Error);
+    }
+  }
+);
 
 export const fetchCommentsPost = createAsyncThunk(
   'fetch-comments',
-  async (id: number) => {
-    const { data } = await PostService.fetchPost(id);
-    return data.kids;
+  async (id: number, { rejectWithValue }) => {
+    try {
+      const { data } = await PostService.fetchPost(id);
+      return data.kids;
+    } catch (err) {
+      return rejectWithValue(err as Error);
+    }
   }
 );

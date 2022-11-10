@@ -3,6 +3,7 @@ import { Arrow } from './Arrow/Arrow';
 import { CommentItem } from './CommentItem/CommentItem';
 import { CommentList } from './CommentList/CommentList';
 import { EndBlock } from './EndBlock/EndBlock';
+import { ErrorMessage } from './ErrorMessage/ErrorMessage';
 import { Header } from './Header/Header';
 import { Loader } from './Loader/Loader';
 import { Main } from './Main/Main';
@@ -23,5 +24,6 @@ export {
   CommentItem,
   Arrow,
   RenderMoreItems,
-  EndBlock
+  EndBlock,
+  ErrorMessage
 };

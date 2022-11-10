@@ -28,9 +28,12 @@ export const postsSlice = createSlice({
           });
         }
       ),
-      builder.addCase(fetchIdPosts.rejected, state => {
-        state.loading = false;
-        state.error = new Error('Error');
-      });
+      builder.addCase(
+        fetchIdPosts.rejected,
+        (state, action: PayloadAction<Error | any>) => {
+          state.loading = false;
+          state.error = new Error(action.payload?.message);
+        }
+      );
   }
 });

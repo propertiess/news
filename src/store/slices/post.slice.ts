@@ -36,11 +36,14 @@ export const postSlice = createSlice({
           });
         }
       ),
-      builder.addCase(fetchIdPosts.rejected, state => {
-        state.loading = false;
-        state.loadingComments = false;
-        state.error = new Error('Error');
-      }),
+      builder.addCase(
+        fetchIdPosts.rejected,
+        (state, action: PayloadAction<Error | any>) => {
+          state.loading = false;
+          state.loadingComments = false;
+          state.error = new Error(action.payload?.message);
+        }
+      ),
       builder.addCase(fetchCommentsPost.pending, state => {
         state.loadingComments = true;
 
@@ -54,9 +57,12 @@ export const postSlice = createSlice({
           state.post.kids = action.payload;
         }
       ),
-      builder.addCase(fetchCommentsPost.rejected, state => {
-        state.loadingComments = false;
-        state.error = new Error('Error');
-      });
+      builder.addCase(
+        fetchCommentsPost.rejected,
+        (state, action: PayloadAction<Error | any>) => {
+          state.loadingComments = false;
+          state.error = new Error(action.payload?.message);
+        }
+      );
   }
 });
