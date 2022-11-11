@@ -20,7 +20,7 @@ const PostList: FC<Props> = () => {
     resetToLoadedItems
   } = useCountRenderedItems(10, idPosts?.length);
 
-  useTimerForUpdatePosts();
+  useTimerForUpdatePosts(resetToLoadedItems);
 
   useEffect(() => {
     !idPosts && fetchIdPosts();
