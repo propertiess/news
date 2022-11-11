@@ -12,7 +12,7 @@ describe('useCountRenderedItems', () => {
 });
 
 describe('incrementCountRenderedItems', () => {
-  test('shouldnt increment count', () => {
+  test("shouldn't increment count", () => {
     const { result } = setup();
 
     act(() => {

@@ -18,8 +18,13 @@ export const useCountRenderedItems = (initState: number, to: number) => {
     setCountRenderedItems(incrementedCount);
   };
 
+  const resetToLoadedItems = () => {
+    setCountRenderedItems(countRenderedItems - 10);
+  };
+
   return {
     countRenderedItems,
-    incrementCountRenderedItems
+    incrementCountRenderedItems,
+    resetToLoadedItems
   };
 };

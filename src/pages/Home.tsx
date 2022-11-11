@@ -1,15 +1,8 @@
 import { FC } from 'react';
-import { PostList, UpdateButton } from '@/components';
-import { useActions } from '@/store/hooks/useActions';
+import { PostList } from '@/components';
 
 const Home: FC = () => {
-  const { fetchIdPosts } = useActions();
-  return (
-    <>
-      <UpdateButton title='Update posts' onClick={() => fetchIdPosts()} />
-      <PostList />
-    </>
-  );
+  return <PostList />;
 };
 
 export { Home };

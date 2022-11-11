@@ -19,12 +19,20 @@ interface Props {
 const CommentList: FC<Props> = ({ kids, count }) => {
   const { post, loadingComments } = useAppSelector(state => state.post);
   const { fetchCommentsPost } = useActions();
-  const { countRenderedItems, incrementCountRenderedItems } =
-    useCountRenderedItems(10, kids?.length!);
+  const {
+    countRenderedItems,
+    incrementCountRenderedItems,
+    resetToLoadedItems
+  } = useCountRenderedItems(10, kids?.length!);
 
   const stylesWrap = count ? styles.wrap : styles.kid;
 
   if (loadingComments) return <Loader />;
+
+  const updateComments = () => {
+    fetchCommentsPost(post.id);
+    resetToLoadedItems();
+  };
 
   return (
     <AnimatePresence>
@@ -33,10 +41,7 @@ const CommentList: FC<Props> = ({ kids, count }) => {
           {count && (
             <p className={styles.count}>
               {count} commentaries
-              <UpdateButton
-                title='Update comments'
-                onClick={() => fetchCommentsPost(post.id)}
-              />
+              <UpdateButton title='Update comments' onClick={updateComments} />
             </p>
           )}
           <AnimatePresence initial={false} mode='popLayout'>
