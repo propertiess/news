@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
 export const useCountRenderedItems = (initState: number, to: number) => {
+  if (initState > to) initState = to;
+
   const [countRenderedItems, setCountRenderedItems] = useState(initState);
 
   const incrementCountRenderedItems = (
@@ -13,7 +15,7 @@ export const useCountRenderedItems = (initState: number, to: number) => {
 
     let incrementedCount = countRenderedItems + 10;
 
-    if (incrementedCount > to) {
+    if (incrementedCount >= to) {
       incrementedCount = to;
       setCountRenderedItems(incrementedCount);
       return;
