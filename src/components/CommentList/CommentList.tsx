@@ -19,11 +19,8 @@ interface Props {
 const CommentList: FC<Props> = ({ kids, count }) => {
   const { post, loadingComments } = useAppSelector(state => state.post);
   const { fetchCommentsPost } = useActions();
-  const {
-    countRenderedItems,
-    incrementCountRenderedItems,
-    resetToLoadedItems
-  } = useCountRenderedItems(10, kids?.length!);
+  const { countRenderedItems, incrementCountRenderedItems } =
+    useCountRenderedItems(10, kids?.length!);
 
   const stylesWrap = count ? styles.wrap : styles.kid;
 
@@ -31,7 +28,6 @@ const CommentList: FC<Props> = ({ kids, count }) => {
 
   const updateComments = () => {
     fetchCommentsPost(post.id);
-    resetToLoadedItems();
   };
 
   return (

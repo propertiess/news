@@ -5,7 +5,7 @@ import { Loader } from '@/components';
 interface Props extends HTMLAttributes<unknown> {
   countRenderedItems: number;
   to: number;
-  renderMore: (inView: any) => void;
+  renderMore: (inView: any, entry: IntersectionObserverEntry) => void;
 }
 
 const RenderMoreItems: FC<PropsWithChildren<Props>> = ({

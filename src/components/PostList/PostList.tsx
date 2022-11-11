@@ -14,13 +14,10 @@ interface Props {}
 const PostList: FC<Props> = () => {
   const { idPosts, loading, error } = useAppSelector(state => state.idPosts);
   const { fetchIdPosts } = useActions();
-  const {
-    countRenderedItems,
-    incrementCountRenderedItems,
-    resetToLoadedItems
-  } = useCountRenderedItems(10, idPosts?.length);
+  const { countRenderedItems, incrementCountRenderedItems } =
+    useCountRenderedItems(10, idPosts?.length);
 
-  useTimerForUpdatePosts(resetToLoadedItems);
+  useTimerForUpdatePosts();
 
   useEffect(() => {
     !idPosts && fetchIdPosts();
@@ -28,14 +25,8 @@ const PostList: FC<Props> = () => {
 
   if (error) return <ErrorMessage message={error.message} />;
 
-  const updatePosts = () => {
-    fetchIdPosts();
-    resetToLoadedItems();
-  };
-
   return (
     <>
-      <UpdateButton title='Update posts' onClick={updatePosts} />
       <ul className={styles.item}>
         {!loading &&
           idPosts &&

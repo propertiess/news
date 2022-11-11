@@ -16,7 +16,10 @@ describe('incrementCountRenderedItems', () => {
     const { result } = setup();
 
     act(() => {
-      result.current.incrementCountRenderedItems(false);
+      result.current.incrementCountRenderedItems(
+        false,
+        {} as IntersectionObserverEntry
+      );
     });
 
     expect(result.current.countRenderedItems).toBe(10);
@@ -26,7 +29,10 @@ describe('incrementCountRenderedItems', () => {
     const { result } = setup();
 
     act(() => {
-      result.current.incrementCountRenderedItems(true);
+      result.current.incrementCountRenderedItems(
+        true,
+        {} as IntersectionObserverEntry
+      );
     });
 
     expect(result.current.countRenderedItems).toBe(20);
@@ -37,14 +43,20 @@ describe('incrementCountRenderedItems', () => {
 
     for (let i = 0; i < 10; i++) {
       act(() => {
-        result.current.incrementCountRenderedItems(true);
+        result.current.incrementCountRenderedItems(
+          true,
+          {} as IntersectionObserverEntry
+        );
       });
     }
 
     expect(result.current.countRenderedItems).toBe(100);
 
     act(() => {
-      result.current.incrementCountRenderedItems(true);
+      result.current.incrementCountRenderedItems(
+        true,
+        {} as IntersectionObserverEntry
+      );
     });
 
     expect(result.current.countRenderedItems).toBe(100);
