@@ -1,7 +1,9 @@
 import { FC } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { EndBlock } from '@/components';
-import { useFetchedPost } from '@/hooks';
+import { EndBlock, ErrorMessage } from '@/components';
+import { useFetchedData } from '@/hooks';
+import { IPost } from '@/interfaces';
+import { PostService } from '@/services';
 import { useAppSelector } from '@/store/hooks';
 import styles from './PostItem.module.scss';
 
@@ -11,12 +13,21 @@ interface Props {
 
 const PostItem: FC<Props> = ({ id }) => {
   const { idPosts } = useAppSelector(state => state.idPosts);
-  const { post, date, isLoading } = useFetchedPost(id);
+
+  const {
+    data: post,
+    date,
+    isLoading,
+    error
+  } = useFetchedData<IPost>(id, PostService.fetchPost);
+
   const isEnd = idPosts[idPosts.length - 1] === id && true;
 
   const history = useHistory();
 
   if (isLoading) return null;
+
+  if (error) return <ErrorMessage message={error.message} />;
 
   return (
     <>

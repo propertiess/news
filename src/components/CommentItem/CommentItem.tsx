@@ -1,9 +1,10 @@
 import { FC, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import HTMLReactParser from 'html-react-parser';
-import { Arrow, CommentList } from '@/components';
+import { Arrow, CommentList, ErrorMessage } from '@/components';
 import { fadeInOutDown } from '@/animation';
-import { useFetchedComment } from '@/hooks';
+import { useFetchedData } from '@/hooks';
+import { CommentService } from '@/services';
 import { getTimeFromNow } from '@/utils/helpers/getTimeFromNow';
 import styles from './CommentItem.module.scss';
 
@@ -12,7 +13,13 @@ interface Props {
 }
 
 const CommentItem: FC<Props> = ({ id }) => {
-  const { comment, date, isLoading } = useFetchedComment(id);
+  const {
+    data: comment,
+    date,
+    error,
+    isLoading
+  } = useFetchedData(id, CommentService.fetchComment);
+
   const [isShowAnswer, setIsShowAnswer] = useState(false);
   const { time } = getTimeFromNow(date.initDate);
 
@@ -21,6 +28,8 @@ const CommentItem: FC<Props> = ({ id }) => {
   const toggleShow = () => {
     setIsShowAnswer(prev => !prev);
   };
+
+  if (error) return <ErrorMessage message={error.message} />;
 
   return (
     <AnimatePresence>
