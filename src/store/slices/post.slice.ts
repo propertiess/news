@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { IPost } from '@/interfaces/post.interface';
-import { fetchCommentsPost, fetchIdPosts, fetchPost } from './post.actions';
+import { fetchCommentsPost, fetchPost } from './post.actions';
 
 interface IState {
   post: IPost;
@@ -37,7 +37,7 @@ export const postSlice = createSlice({
         }
       ),
       builder.addCase(
-        fetchIdPosts.rejected,
+        fetchPost.rejected,
         (state, action: PayloadAction<Error | any>) => {
           state.loading = false;
           state.loadingComments = false;
@@ -46,7 +46,6 @@ export const postSlice = createSlice({
       ),
       builder.addCase(fetchCommentsPost.pending, state => {
         state.loadingComments = true;
-
         state.error = null;
       }),
       builder.addCase(
