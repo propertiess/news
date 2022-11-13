@@ -14,9 +14,10 @@ import styles from './CommentList.module.scss';
 interface Props {
   kids: number[];
   count?: number;
+  isKid?: boolean
 }
 
-const CommentList: FC<Props> = ({ kids, count }) => {
+const CommentList: FC<Props> = ({ kids, count, isKid }) => {
   const { post, loadingComments } = useAppSelector(state => state.post);
   const { fetchCommentsPost } = useActions();
   const { countRenderedItems, incrementCountRenderedItems } =
@@ -30,11 +31,13 @@ const CommentList: FC<Props> = ({ kids, count }) => {
     fetchCommentsPost(post.id);
   };
 
+  if (!count) return null;
+
   return (
     <AnimatePresence>
       {!!kids?.length && (
         <motion.ul className={stylesWrap} layout {...fadeInOut}>
-          {count && (
+          {count && !isKid && (
             <p className={styles.count}>
               {count} commentaries
               <UpdateButton title='Update comments' onClick={updateComments} />
@@ -44,7 +47,7 @@ const CommentList: FC<Props> = ({ kids, count }) => {
             {kids &&
               kids
                 .slice(0, countRenderedItems)
-                .map(el => <CommentItem key={el} id={el} />)}
+                .map(el => <CommentItem key={el} id={el} count={count} />)}
           </AnimatePresence>
           <RenderMoreItems
             countRenderedItems={countRenderedItems}

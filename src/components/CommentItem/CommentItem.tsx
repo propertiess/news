@@ -10,9 +10,10 @@ import styles from './CommentItem.module.scss';
 
 interface Props {
   id: number;
+  count?: number;
 }
 
-const CommentItem: FC<Props> = ({ id }) => {
+const CommentItem: FC<Props> = ({ id, count }) => {
   const {
     data: comment,
     date,
@@ -51,7 +52,9 @@ const CommentItem: FC<Props> = ({ id }) => {
               ) : (
                 <Arrow title='Hide answers' up onClick={toggleShow} />
               )}
-              {isShowAnswer && <CommentList kids={comment?.kids!} />}
+              {isShowAnswer && (
+                <CommentList kids={comment?.kids!} count={count} isKid />
+              )}
             </>
           )}
         </motion.li>
