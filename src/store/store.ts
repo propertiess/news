@@ -1,9 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { postSlice, postsSlice } from './slices';
+import { postSlice, postsSlice, scrollSlice } from './slices';
 
 export const rootReducer = combineReducers({
   idPosts: postsSlice.reducer,
-  post: postSlice.reducer
+  post: postSlice.reducer,
+  scroll: scrollSlice.reducer
 });
 
 export const store = configureStore({

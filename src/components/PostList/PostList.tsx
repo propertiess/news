@@ -1,11 +1,7 @@
 import { FC, useEffect } from 'react';
-import {
-  ErrorMessage,
-  PostItem,
-  RenderMoreItems,
-  UpdateButton
-} from '@/components';
+import { ErrorMessage, PostItem, RenderMoreItems } from '@/components';
 import { useCountRenderedItems, useTimerForUpdatePosts } from '@/hooks';
+import { useScrollView } from '@/hooks/useScrollView';
 import { useActions, useAppSelector } from '@/store/hooks';
 import styles from './PostList.module.scss';
 
@@ -14,8 +10,10 @@ interface Props {}
 const PostList: FC<Props> = () => {
   const { idPosts, loading, error } = useAppSelector(state => state.idPosts);
   const { fetchIdPosts } = useActions();
+
   const { countRenderedItems, incrementCountRenderedItems } =
-    useCountRenderedItems(10, idPosts?.length);
+    useCountRenderedItems(10, idPosts?.length, 'post');
+  const { onClick } = useScrollView();
 
   useTimerForUpdatePosts();
 
@@ -27,7 +25,7 @@ const PostList: FC<Props> = () => {
 
   return (
     <>
-      <ul className={styles.item}>
+      <ul className={styles.item} onClick={onClick}>
         {!loading &&
           idPosts &&
           idPosts

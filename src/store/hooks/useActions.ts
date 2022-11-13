@@ -1,5 +1,5 @@
 import { bindActionCreators } from '@reduxjs/toolkit';
-import { postsSlice } from '../slices';
+import { postsSlice, scrollSlice } from '../slices';
 import {
   fetchCommentsPost,
   fetchIdPosts,
@@ -9,6 +9,7 @@ import { useAppDispatch } from './useAppDispatch';
 
 const allActions = {
   ...postsSlice.actions,
+  ...scrollSlice.actions,
   fetchIdPosts,
   fetchPost,
   fetchCommentsPost

@@ -19,7 +19,7 @@ const PostItem: FC<Props> = ({ id }) => {
     date,
     isLoading,
     error
-  } = useFetchedData<IPost>(id, PostService.fetchPost);
+  } = useFetchedData<IPost>(id, PostService.fetchPost, 'post');
 
   const isEnd = idPosts[idPosts.length - 1] === id && true;
 
