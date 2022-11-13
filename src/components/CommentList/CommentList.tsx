@@ -14,7 +14,7 @@ import styles from './CommentList.module.scss';
 interface Props {
   kids: number[];
   count?: number;
-  isKid?: boolean
+  isKid?: boolean;
 }
 
 const CommentList: FC<Props> = ({ kids, count, isKid }) => {

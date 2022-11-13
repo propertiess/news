@@ -26,7 +26,7 @@ export const scrollSlice = createSlice({
       state.postsTop = action.payload;
     },
     setShouldRendered: (state, action: PayloadAction<number>) => {
-      state.shouldRendered = action.payload
+      state.shouldRendered = action.payload;
     }
   }
 });
