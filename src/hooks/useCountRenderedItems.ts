@@ -22,7 +22,7 @@ export const useCountRenderedItems = (
   ) => {
     if (!inView) return;
     if (countRenderedItems === to) return;
-    if (entry.boundingClientRect.bottom < 450) return;
+    if (entry?.boundingClientRect?.bottom < 450) return;
 
     let incrementedCount = countRenderedItems + 10;
 

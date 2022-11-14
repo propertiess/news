@@ -21,7 +21,7 @@ const PostItem: FC<Props> = ({ id }) => {
     error
   } = useFetchedData<IPost>(id, PostService.fetchPost, 'post');
 
-  const isEnd = idPosts[idPosts.length - 1] === id && true;
+  const isEnd = idPosts && idPosts[idPosts.length - 1] === id && true;
 
   const history = useHistory();
 
@@ -32,7 +32,7 @@ const PostItem: FC<Props> = ({ id }) => {
   return (
     <>
       <li className={styles.post} onClick={() => history.push(`/post/${id}`)}>
-        <Link className={styles.title} to={`/post/${id}`} replace>
+        <Link className={styles.title} to={`/post/${id}`}>
           {post?.title}
         </Link>
         <p className={styles.dateAndCreated}>

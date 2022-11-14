@@ -26,14 +26,14 @@ const PostView: FC<Props> = ({ id }) => {
   }
 
   return (
-    <div className={styles.wrap}>
+    <div className={styles.wrap} data-testid='post-view'>
       <div>
         <ArrowUturnLeftIcon
           className={styles.back}
           onClick={() => history.push('/')}
         />
       </div>
-      <p className={styles.date}>
+      <p className={styles.date} data-testid='date'>
         {date?.time} {date?.date}
       </p>
       <h2>{post?.title}</h2>

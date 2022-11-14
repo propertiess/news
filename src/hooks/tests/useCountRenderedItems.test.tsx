@@ -1,8 +1,12 @@
 import { renderHook } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import { useCountRenderedItems } from '@/hooks';
+import { wrapperProvider } from '@/utils/helpers/wrapperProvider';
 
-const setup = () => renderHook(() => useCountRenderedItems(10, 100));
+const setup = () =>
+  renderHook(() => useCountRenderedItems(10, 100), {
+    wrapper: wrapperProvider
+  });
 
 describe('useCountRenderedItems', () => {
   test('countRenderedItems should be 10', () => {

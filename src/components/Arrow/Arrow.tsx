@@ -18,7 +18,8 @@ const Arrow: FC<Props> = ({ up, title, onClick }) => {
         onClick={onClick}
         data-testid='arrow-up'
       >
-        {title} <ArrowUpIcon width={15} height={15} />
+        {title}
+        <ArrowUpIcon width={15} height={15} />
       </motion.span>
     );
 
@@ -29,7 +30,8 @@ const Arrow: FC<Props> = ({ up, title, onClick }) => {
       onClick={onClick}
       data-testid='arrow-down'
     >
-      {title} <ArrowDownIcon width={15} height={15} />
+      {title}
+      <ArrowDownIcon width={15} height={15} />
     </motion.span>
   );
 };
