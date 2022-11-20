@@ -50,10 +50,14 @@ export const postSlice = createSlice({
       }),
       builder.addCase(
         fetchCommentsPost.fulfilled,
-        (state, action: PayloadAction<number[]>) => {
+        (
+          state,
+          action: PayloadAction<{ kids: number[]; descendants: number }>
+        ) => {
           state.error = null;
           state.loadingComments = false;
-          state.post.kids = action.payload;
+          state.post.kids = action.payload.kids;
+          state.post.descendants = action.payload.descendants;
         }
       ),
       builder.addCase(

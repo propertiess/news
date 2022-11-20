@@ -31,7 +31,7 @@ export const fetchCommentsPost = createAsyncThunk(
   async (id: number, { rejectWithValue }) => {
     try {
       const { data } = await PostService.fetchPost(id);
-      return data.kids;
+      return { kids: data.kids, descendants: data.descendants };
     } catch (err) {
       return rejectWithValue(err as Error);
     }
