@@ -17,7 +17,7 @@ export const useFetchedData = <T>(
   const date = useDate((data as any)?.time);
 
   useEffect(() => {
-    const fetchData = async () => {
+    (async () => {
       setError(null);
       setIsLoading(true);
       try {
@@ -29,9 +29,7 @@ export const useFetchedData = <T>(
       } finally {
         setIsLoading(false);
       }
-    };
-
-    fetchData();
+    })();
 
     return () => {
       if (type) decrementRenderedPosts();
