@@ -1,6 +1,6 @@
 import { FC, useEffect } from 'react';
 import { ErrorMessage, PostItem, RenderMoreItems } from '@/components';
-import { useCountRenderedItems, useTimerForUpdatePosts } from '@/hooks';
+import { useCountRenderedItems } from '@/hooks';
 import { useScrollView } from '@/hooks/useScrollView';
 import { useActions, useAppSelector } from '@/store/hooks';
 import styles from './PostList.module.scss';
@@ -14,8 +14,6 @@ const PostList: FC<Props> = () => {
   const { countRenderedItems, incrementCountRenderedItems } =
     useCountRenderedItems(10, idPosts?.length, 'post');
   const { onClick } = useScrollView();
-
-  useTimerForUpdatePosts();
 
   useEffect(() => {
     !idPosts && fetchIdPosts();

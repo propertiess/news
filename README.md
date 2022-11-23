@@ -7,15 +7,15 @@ ReactJS, Typescript, react-router-dom v5, redux-toolkit, module scss, tailwind
 ```
 ## Installation
 
-### `yarn`
+### `pnpm i`
 
 ## Running the app
 
-### `yarn start`
+### `pnpm start`
 
 ## Test
 
-### `yarn test`
+### `pnpm test`
 
 
 ## Main page
