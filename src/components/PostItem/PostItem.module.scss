@@ -21,3 +21,9 @@
     @apply text-[10px] ml-1;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .post {
+    @apply bg-black text-white shadow-none border border-white border-opacity-20;
+  }
+}

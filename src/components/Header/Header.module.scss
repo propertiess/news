@@ -1,3 +1,9 @@
 .header {
   @apply px-3 py-1 shadow-md;
 }
+
+@media (prefers-color-scheme: dark) {
+  .header {
+    @apply shadow-none border-b border-white border-opacity-10;
+  }
+}

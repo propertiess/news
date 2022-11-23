@@ -4,3 +4,9 @@
 .wrap {
   @apply relative;
 }
+
+@media (prefers-color-scheme: dark) {
+  .item {
+    @apply bg-black;
+  }
+}

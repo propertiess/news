@@ -13,3 +13,9 @@
     @apply text-gray-400 text-[13px];
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .wrap {
+    @apply text-white;
+  }
+}
