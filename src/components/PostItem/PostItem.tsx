@@ -25,14 +25,22 @@ const PostItem: FC<Props> = ({ id }) => {
 
   const history = useHistory();
 
-  if (isLoading) return null;
+  if (isLoading) {
+    return null;
+  }
 
-  if (error) return <ErrorMessage message={error.message} />;
+  if (error) {
+    return <ErrorMessage message={error.message} />;
+  }
 
   return (
     <>
       <li className={styles.post} onClick={() => history.push(`/post/${id}`)}>
-        <Link className={styles.title} to={`/post/${id}`}>
+        <Link
+          className={styles.title}
+          to={`/post/${id}`}
+          onClick={e => e.stopPropagation()}
+        >
           {post?.title}
         </Link>
         <p className={styles.dateAndCreated}>
